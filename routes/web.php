@@ -8,7 +8,7 @@ Route::get('profile','ProfileController@index')->middleware('auth');
 
 // Book service
 Route::post('book-service','BookingController@index');
-// added something
+
 
 Route::get('/',function(){
     return view('pages.index');
