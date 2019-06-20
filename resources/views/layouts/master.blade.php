@@ -10,6 +10,7 @@
     <link rel="stylesheet" href=" {{asset('css/owl.carousel.min.css')}} ">
     <link rel="stylesheet" href=" {{asset('css/owl.theme.default.min.css')}} ">
     <link rel="stylesheet" href=" {{asset('css/style.css')}} ">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-multiselect.css')}}">
 </head>
@@ -35,9 +36,9 @@
                         <div class="form-group">
                             <label for="services">Select Services </label>
                             <select name="services[]" id="services" class="form-control" multiple="multiple">
-                                    
+                                    {{$count=1}}
                                 @foreach ($cached_services as $service)
-                                    <option value="1">{{$service}}</option>
+                                    <option value="{{$service}}">{{$service}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,8 +47,11 @@
                             <label for="city">City</label>
                             <select name="city" id="city" class="form-control">
                                 <option value="">Select City</option>
-                                <option value="1">alwar</option>
-                                <option value="2">gurgoan</option>
+                                <option value="alwar">alwar</option>
+                                <option value="gurgoan">gurgoan</option>
+                                <option value="Delhi">Delhi</option>
+
+                                
                             </select>
                         </div>
                        
@@ -55,8 +59,8 @@
                             <label for="location">Location</label>
                             <select name="location" id="location" class="form-control">
                                 <option value="">Select Location</option>
-                                <option value="1">alwar</option>
-                                <option value="2">gurgoan</option>
+                                <option value="alwar">alwar</option>
+                                <option value="gurgoan">gurgoan</option>
                             </select>
                         </div>
     
@@ -84,13 +88,47 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src=" {{asset('js/owl.carousel.min.js')}} "></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
             <script src="{{asset('js/bootstrap-multiselect.js')}}"></script>
             {{-- <script src=" {{asset('js/app.js')}} "></script> --}}
+            <script src=" {{asset('js/custom.js')}} "></script>
             <script type="text/javascript">
                 $(document).ready(function() {
                     $('#services').multiselect();
                 });
             </script>
+
+             <script>
+            $(document).ready(function () {    
+                   var d = new Date();
+                   var currMonth = d.getMonth();
+                   var currYear = d.getFullYear();
+                   var startDate = new Date(currYear, currMonth, 1);
+                   var newdate = new Date();
+                   newdate.setDate(newdate.getDate() + 5);
+
+                   $("#dt1").datepicker({
+                        startDate : new Date()   
+
+                   });
+                   $("#dt2").datepicker({
+                    startDate : newdate
+                   });
+
+                   // date value view
+                    $("#dt2").on('change', function(){
+                    var dd1= $("#dt1").val();
+                    var dd2= $("#dt2").val();
+                  //  console.log(dd2);
+                    $("#demo").html('Pick Date:'+ dd1 +'<br> Drop date: '+ dd2);
+                    });
+
+
+
+                 });
+
+            </script>
+
             @section('scripts')
             @show
             

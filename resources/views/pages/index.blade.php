@@ -421,6 +421,8 @@ $('.owl-carousel').owlCarousel({
             items:3
         }
     }
-})</script>
+})
+</script>
+
 
 @endsection
