@@ -4,7 +4,7 @@ use App\Exceptions\CustomException;
 
 // User profile 
 Route::get('profile','ProfileController@index')->middleware('auth');
-// Route::get('profile','ProfileController@show')->middleware('auth');
+Route::post('profile', 'ProfileController@upload');
 
 // Book service
 Route::post('book-service','BookingController@index');
@@ -12,6 +12,10 @@ Route::get('book-service', function(){
     return view('pages.booking');
 
         });
+
+
+// my order
+Route::get('orders', 'OrderController@index');
 
 
 Route::get('/',function(){
@@ -62,3 +66,5 @@ Route::get('/{route}',function($route){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

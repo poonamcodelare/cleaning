@@ -97,7 +97,6 @@
                     $('#services').multiselect();
                 });
             </script>
-
              <script>
             $(document).ready(function () {    
                    var d = new Date();

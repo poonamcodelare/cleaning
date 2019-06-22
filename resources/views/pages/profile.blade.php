@@ -47,16 +47,79 @@ button:hover, a:hover {
 <body>
 
 <h2 style="text-align:center">User Profile</h2>
+<!-- &nbsp; &nbsp; &nbsp; -->
+<!-- <div class="card">
 
-<div class="card">
-  <!-- <img src="../public/img/1.jpg" alt="John" style="width:100%"> -->
   <img src="{{asset('img/1.jpg')}}" alt="the company logo" width="100%">
   <p>Name : {{ $user->name }}</p>
-  <!-- <p class="titl">CEO & Founder, Example</p> -->
   <p>Email : {{ $user->email }}</p>
 
   <p><button>Details</button></p>
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <figure class="customer_profile_image">
+        <span class="badge badge-info" data-toggle="modal" data-target="#profilePicture"><i class="fa fa-upload"></i></span>
+        @if(strlen($user->image) == "")
+         <img src="{{asset('img/new.png')}}" alt="the company logo" width="80px; height="80px">
+         @else
+         <img src="{{asset('uploads/'.$user->image)}}" alt="the company logo" width="80px; height="80px;">
+         @endif
+          <!-- <p>image : {{ $user->image }}</p> -->
+      </figure>
+    
+    </div>
+    <div class="col-sm-8">
+
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="orders">Order</a>
+      <a href="#setting">Setting</a>
+   </div>
+
+      &nbsp; &nbsp; &nbsp;
+      <p>Name : {{ $user->name }}</p>
+      <p>Email : {{ $user->email }}</p>
+      <p>phone : {{ $user->phone }}</p>
+      <p>Address : {{ $user->Address }}</p>
+      <p>Image : {{ $user->image }}</p>
+     
+    </div>
+    
+  </div>
 </div>
+
+ <div class="modal fade" id="profilePicture" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <div class="modal-body">
+               <div class="row justify-content-center">
+                  <form action="/profile" method="post" enctype="multipart/form-data">
+                      @csrf
+                      <div class="form-group">
+                          <input type="file" class="form-control-file" name="image" id="avatarFile" aria-describedby="fileHelp">
+                          <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+        </div>
+      
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+
 
 </body>
 </html>

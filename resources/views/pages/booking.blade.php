@@ -26,7 +26,7 @@
                                 <div class="col-6"><b>Drop Date:</b>  <input class="form-control" type="text" id="dt2"></div>
                             </div>
                             
-                            <h4 class="tex-left" id="demo"></h4>
+                            <h4 class="tex-left" id="demo" style="font-size: 14px;"></h4>
                         </div>
                       </div>
                 </div>
