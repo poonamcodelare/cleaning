@@ -36,7 +36,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="col-md-10 contact-right">
-                                <a href="tel:9999999999">+91-9999999999</a>
+                                Contact no: <a href="tel:9999999999">+91-9999999999</a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="col-md-10 contact-right">
-                                    <a href="mailto:email@something.com">email@something.com</a>
+                                    Email: <a href="mailto:email@something.com">email@something.com</a>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,8 @@
             {{-- Right Section --}}
             
             <div class="col-md-6">
-                <form action="" method="POST">
+                <form action="/contact-us-now" method="post">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label for="name">Name<sup>*</sup></label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" >

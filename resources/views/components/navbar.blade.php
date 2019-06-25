@@ -14,11 +14,12 @@
             <div class="collapse navbar-collapse " id="navbarCollapseContainer">
                
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a href="/" class="nav-link">
                                Home
                         </a>
                     </li>
+                   
                     <li class="nav-item">
                         <a href="/contact-us" class="nav-link">
                                 Be a franchise
@@ -39,12 +40,23 @@
                                Locate us
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/orders" class="nav-link">
+                        Order
+                       </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/gallery" class="nav-link">
+                        Gallery
+                       </a>
+                    </li>
                 
                     {{-- <li class="nav-item">
                         <a href="/blog" class="nav-link">
                                Blog
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="/donate" class="nav-link">
                                Donate
@@ -57,7 +69,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/profile">Profile</a>
-                                <a class="dropdown-item" href="#">Setting</a>
+                                <!-- <a class="dropdown-item" href="#">Setting</a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout" 
                                     onclick="event.preventDefault();

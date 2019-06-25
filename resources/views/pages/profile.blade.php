@@ -47,16 +47,6 @@ button:hover, a:hover {
 <body>
 
 <h2 style="text-align:center">User Profile</h2>
-<!-- &nbsp; &nbsp; &nbsp; -->
-<!-- <div class="card">
-
-  <img src="{{asset('img/1.jpg')}}" alt="the company logo" width="100%">
-  <p>Name : {{ $user->name }}</p>
-  <p>Email : {{ $user->email }}</p>
-
-  <p><button>Details</button></p>
-</div> -->
-
 
 <div class="container">
   <div class="row">
@@ -68,7 +58,6 @@ button:hover, a:hover {
          @else
          <img src="{{asset('uploads/'.$user->image)}}" alt="the company logo" width="80px; height="80px;">
          @endif
-          <!-- <p>image : {{ $user->image }}</p> -->
       </figure>
     
     </div>
@@ -76,9 +65,9 @@ button:hover, a:hover {
 
     <div class="topnav">
       <a class="active" href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
+      <!-- <a href="gallery">Gallery</a> -->
       <a href="orders">Order</a>
-      <a href="#setting">Setting</a>
+<!--       <a href="#setting">Setting</a> -->
    </div>
 
       &nbsp; &nbsp; &nbsp;
@@ -86,7 +75,8 @@ button:hover, a:hover {
       <p>Email : {{ $user->email }}</p>
       <p>phone : {{ $user->phone }}</p>
       <p>Address : {{ $user->Address }}</p>
-      <p>Image : {{ $user->image }}</p>
+      <p><a href="{{ 'edit/'.$user->id }}">Edit</a> | <a href="{{ 'delete/'.$user->id }}">Delete</a></p>
+      <!-- <p>Image : {{ $user->image }}</p> -->
      
     </div>
     
@@ -115,6 +105,7 @@ button:hover, a:hover {
       </div>
     </div>
   </div>
+
 
 
  

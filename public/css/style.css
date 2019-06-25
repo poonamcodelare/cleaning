@@ -545,3 +545,43 @@ body {
   background-color: #4CAF50;
   color: white;
 }
+
+.inner-form-container{
+    /*margin: auto;*/
+    margin-left:350px;
+    margin-top: 40px;
+}
+
+
+/*/*/
+html, body {
+  margin: 0; padding: 0;
+}
+.hero-bkg-animated {
+  background: gray url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  height: 600px;
+  padding-top: 120px;
+  box-sizing: border-box;
+  -webkit-animation: slide 20s linear infinite;
+}
+
+.hero-bkg-animated h1 {
+  font-family: sans-serif;
+}
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+
+.modal-dialog{
+   
+    position: relative;bottom:100px;
+}
+
+/*.footer-margin{
+    margin-top: -246px;
+}*/

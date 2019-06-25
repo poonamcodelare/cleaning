@@ -40,4 +40,30 @@ class ProfileController extends Controller
             ->with('success','You have successfully upload image.');
     }
 
+    public function edit($id)
+    {
+        $user = Auth::user();
+        return view('pages.setting',compact('user','id'));
+    }
+
+    public function update(Request $request,$id)
+       {
+           $user = Auth::user();
+           $user->name = $request->input('name');
+           $user->phone = $request->input('phone');
+           $user->Address = $request->input('address');
+           $user->email = $request->input('email');
+           // $user->password = $request->input('password');
+           $user->save();
+           return redirect('profile');
+       }
+
+     public function delete($id)
+        {
+             $user = Auth::user();
+              $user->delete();
+
+              return redirect('/');
+        }
+
 }

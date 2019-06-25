@@ -92,6 +92,7 @@
             <script src="{{asset('js/bootstrap-multiselect.js')}}"></script>
             {{-- <script src=" {{asset('js/app.js')}} "></script> --}}
             <script src=" {{asset('js/custom.js')}} "></script>
+            <script src=" {{asset('js/jquery.slim.min.js')}} "></script>
             <script type="text/javascript">
                 $(document).ready(function() {
                     $('#services').multiselect();
