@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Session;
+
+use App\User;
+
 
 class ProfileController extends Controller
 {
@@ -18,26 +22,64 @@ class ProfileController extends Controller
 
     public function upload(Request $request)
     {
-    	request()->validate([
+
+
+        request()->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-    	$user = Auth::user();
+      $user = Auth::user();
 
-    	// $avatarName = $user->id.'_profile'.time().'.'.request()->image->getClientOriginalExtension();
+      $imageName = $user->id.'_profile'.time().'.'.request()->image->getClientOriginalExtension();
 
-		$file = $_FILES['image']['tmp_name'];
-		$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-		$imgName = addslashes($_FILES['image']['name']);
-		$imgSize = getimagesize($_FILES['image']['tmp_name']);
-		$des = "D:/xampp/htdocs/cleaning_website/public/uploads/";
-		move_uploaded_file($file,$des.$imgName);
+        request()->image->move(public_path('uploads'), $imageName);
 
-        $user->image = $imgName;
+        $user->Profile_Image = $imageName;
         $user->save();
+      
+         Session::flash("success", "You have successfully upload image.");
+         return back();
 
-        return back()
-            ->with('success','You have successfully upload image.');
+
+
+        //  $uploaded_image = User::find($id)->get(['Profile_Image']);
+        // $uploaded_image = $uploaded_image[0]->Profile_Image;
+        //  $validator = Validator::make($request->all(),
+        //     [
+        //       'image' =>  'required',
+        //     ],
+        //     [
+        //       'image.required' => trans('auth.imageRequired'),
+        //     ]
+        // );
+
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
+          
+        // else{   
+          
+        //     if (Input::hasFile('Profile_Image')) {
+
+        //         $user = Auth::user();
+        //          $imageName = $user->id.'_profile'.time().'.'.request()->image->getClientOriginalExtension();
+
+        //         request()->image->move(storage_path('uploads'), $imageName);
+
+        //        $user->Profile_Image = $imageName;
+        //        $user->save();
+        
+
+        //       if(file_exists('./storage/uploads/'.$uploaded_image)){
+                  
+        //           unlink('./storage/uploads/'.$uploaded_image);
+        //          }
+
+        //       }
+        // }
+        // Session::flash("success", "You have successfully upload image.");
+        //  return back();
+            
     }
 
     public function edit($id)
@@ -48,9 +90,9 @@ class ProfileController extends Controller
 
     public function update(Request $request,$id)
        {
-           $user = Auth::user();
+            $user = Auth::user();
            $user->name = $request->input('name');
-           $user->phone = $request->input('phone');
+           $user->Phone_Number = $request->input('phone');
            $user->Address = $request->input('address');
            $user->email = $request->input('email');
            // $user->password = $request->input('password');

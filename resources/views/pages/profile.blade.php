@@ -19,12 +19,10 @@
   text-align: center;
   font-family: arial;
 }
-
 .titl {
   color: grey;
   font-size: 18px;
 }
-
 button {
   border: none;
   outline: 0;
@@ -37,8 +35,6 @@ button {
   width: 100%;
   font-size: 18px;
 }
-
-
 button:hover, a:hover {
   opacity: 0.7;
 }
@@ -49,14 +45,20 @@ button:hover, a:hover {
 <h2 style="text-align:center">User Profile</h2>
 
 <div class="container">
+  @if(Session::has('success'))
+    <div class="alert alert-info">
+       {{Session::get('success')}}
+    </div>
+   @endif 
+
   <div class="row">
     <div class="col-sm-4">
       <figure class="customer_profile_image">
         <span class="badge badge-info" data-toggle="modal" data-target="#profilePicture"><i class="fa fa-upload"></i></span>
-        @if(strlen($user->image) == "")
+        @if(strlen($user->Profile_Image) == "")
          <img src="{{asset('img/new.png')}}" alt="the company logo" width="80px; height="80px">
          @else
-         <img src="{{asset('uploads/'.$user->image)}}" alt="the company logo" width="80px; height="80px;">
+         <img src="{{asset('uploads/'.$user->Profile_Image)}}" alt="the company logo" width="80px; height="80px;">
          @endif
       </figure>
     
@@ -73,9 +75,33 @@ button:hover, a:hover {
       &nbsp; &nbsp; &nbsp;
       <p>Name : {{ $user->name }}</p>
       <p>Email : {{ $user->email }}</p>
-      <p>phone : {{ $user->phone }}</p>
+      <p>phone : {{ $user->Phone_Number }}</p>
       <p>Address : {{ $user->Address }}</p>
-      <p><a href="{{ 'edit/'.$user->id }}">Edit</a> | <a href="{{ 'delete/'.$user->id }}">Delete</a></p>
+      <p><a class="" href="{{ 'edit/'.$user->id }}">Edit</a>
+        <!-- <a href="{{ 'delete/'.$user->id }}">Delete</a> -->
+      <!-- <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{ 'delete/'.$user->id }}"><i class="fa fa-trash"></i>Delete</a> -->
+
+     | <a href="" class="" data-toggle="modal" data-target="#deleteModel"><i class="fa fa-trash"></i></a>
+
+    </p>
+
+         <div class="modal fade" id="deleteModel">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title">Delete</h5>
+                          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                         <h5 class="text-danger">You really want to delete?</h5>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <a href="{{ 'delete/'.$user->id }}" class="btn btn-primary">Delete</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
       <!-- <p>Image : {{ $user->image }}</p> -->
      
     </div>
@@ -100,7 +126,7 @@ button:hover, a:hover {
               </div>
         </div>
       
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="" data-dismiss="modal">Close</button>
         
       </div>
     </div>

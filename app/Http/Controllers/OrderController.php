@@ -10,6 +10,8 @@ use App\Service;
 use App\Order;
 use Validator;
 Use DB;
+use Session;
+
 class OrderController extends Controller
 {
      public function index(){
@@ -18,46 +20,39 @@ class OrderController extends Controller
       return view('pages.order',compact('user', 'service'));
     }
 
-      public function store(Request $request)
-	    {
-	    	Validator::make($request->all(),
-	    			[
-			'User_Id' => 'required',
-			'check_in' => 'required',
-			'check_out' => 'required',
-			'Service_Id' => 'required',
+   //    public function store(Request $request)
+	  //   {
+	  //   	Validator::make($request->all(),
+	  //   			[
+			// 'User_Id' => 'required',
+			// 'check_in' => 'required',
+			// 'check_out' => 'required',
+			// 'Service_Id' => 'required',
 
-	    ])->validate();
+	  //   ])->validate();
 
-	    	 $cids=strtotime($request->input('check_in'));
-	    	 $newCIdate=date("Y-m-d", $cids);
-	    	 $cods=strtotime($request->input('check_out'));
-	    	 $newCOdate=date("Y-m-d", $cods);
+	  //   	 $cids=strtotime($request->input('check_in'));
+	  //   	 $newCIdate=date("Y-m-d", $cids);
+	  //   	 $cods=strtotime($request->input('check_out'));
+	  //   	 $newCOdate=date("Y-m-d", $cods);
              
-             $new = [
-             	'User_Id' => $request->input('User_Id'),
-             	'pickdate' => $newCIdate,
-             	'dropdate' => $newCOdate,
-             	'Service_Id' => $request->input('Service_Id'),
-             	'Order_Title' => $request->input('Order_Title'),
-             	'Order_Types' => $request->input('Order_Types'),
-             	'Order_content' => $request->input('Order_content'),
-             	'Payments' => $request->input('Payments'),
+   //           $new = [
+   //           	'User_Id' => $request->input('User_Id'),
+   //           	'PickUp_At' => $newCIdate,
+   //           	'Delivery_At' => $newCOdate,
+   //           	'Service_Id' => $request->input('Service_Id'),
+   //           	'Order_Title' => $request->input('Order_Title'),
+   //           	'Order_Types' => $request->input('Order_Types'),
+   //           	'Order_content' => $request->input('Order_content'),
+   //           	'Payments' => $request->input('Payments'),
              	
 
-             ];      
-             DB::table('orders')->insert($new);
-
-	        return redirect('/orders');
-	        // ->with('success', 'Ordered Successfully');
-
-	        // return back()->with('success','Item created successfully!');
-
-	        // return redirect()->route('/orders')
-	        // 	->with('success', 'Ordered Successfully');
-
-
-	    }
+   //           ];      
+   //           DB::table('orders')->insert($new);
+   //           Session::flash("success", "Order added Successfully.");
+	  //       return redirect('/orders');
+	       
+	  //   }
 
 
 

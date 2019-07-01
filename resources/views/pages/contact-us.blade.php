@@ -13,20 +13,29 @@
 
 <section class="contact-us-section">
     <div class="container">
+        @if(Session::has('success'))
+        <div class="alert alert-info">
+           {{Session::get('success')}}
+        </div>
+       @endif 
         <div class="row">
             
             {{-- Left Section --}}
 
             <div class="col-md-6">
                 <div class="col-md-8">
-                    <h5>Contact Details</h5>
+                    <h5 class="text-center" style="font-size: 30px;">Contact Details</h5>
                     <div class="contact-us-box">
                         <div class="row">
                             <div class="col-md-2 contact-left">
                                 <i class="fas fa-map-marked"></i>
-                            </div>
+                            </div><hr>
                             <div class="col-md-10 contact-right">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente, impedit.</p>
+                                <p>The Laundry Basket is one of the largest online 
+                                    laundry service providers in Delhi. We are 
+                                    dedicated to provide you with the best care for
+                                    your garments. Call / Drop-In or Schedule a 
+                                    Pick-Up through our App !.</p>
                             </div>
                         </div>
                     </div>
@@ -36,7 +45,9 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="col-md-10 contact-right">
-                                Contact no: <a href="tel:9999999999">+91-9999999999</a>
+                             <b>Contact no: <a href="#" style="color:#007bff;">+91-8926389263</b></a> 
+                                 <!-- <span class="glyphicon glyphicon-earphone"></span> -->
+                                 <!-- <span>+91-8926389263</span> -->
                             </div>
                         </div>
                     </div>
@@ -46,8 +57,11 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="col-md-10 contact-right">
-                                    Email: <a href="mailto:email@something.com">email@something.com</a>
+                                    <b>Email: <a href="mailto:email@something.com" style="color:#007bff;">info@tajoutlet.com</b></a>
                             </div>
+                        </div>
+                        <div style="position: absolute;right: 126px;padding: 10px;margin: auto">
+                            <b>Address: <a href="#">DLF Phase1</a></b>
                         </div>
                     </div>
                 </div>

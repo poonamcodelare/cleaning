@@ -23,7 +23,7 @@
         <div class="row">
           <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Phone:</label>
           <div class="col-md-6 col-lg-4 col-xl-3">
-          	<input type="text" class="form-control" id="lgFormGroupInput" placeholder="phone" name="phone" value="{{ $user->phone }}">
+          	<input type="text" class="form-control" id="lgFormGroupInput" placeholder="phone" name="phone" value="{{ $user->Phone_Number }}">
           </div>
         </div>
 

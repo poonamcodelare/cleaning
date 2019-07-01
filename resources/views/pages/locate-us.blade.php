@@ -54,7 +54,7 @@
         $('#location,#locate_us_content').animate({'opacity' : 0},200);
 
         $.ajax({
-            url : '/locate-us/' + locationId,
+            url : 'locate-us/' + locationId,
             type : 'GET',
             success : function(res){
                 console.log(res);

@@ -50,7 +50,7 @@
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
                                             <div class="col-sm-10 text-justify">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam laborum voluptatem reiciendis animi ex blanditiis nam eum harum magnam vel.
+                                                 “Laundry Expert stands out for its high degree of involvement in the process and a very customer-friendly attitude.”
                                             </div>
                                         </div>
                                     </li>
@@ -60,7 +60,7 @@
                                                 <i class="fas fa-phone"></i>
                                             </div>
                                             <div class="col-sm-10 text-justify">
-                                                <a href="tel:9999999999">+91-9999999999</a>
+                                                <a href="#">+91-8926389263</a>
                                             </div>
                                         </div>
                                     </li>
@@ -70,19 +70,38 @@
                                                 <i class="fas fa-envelope"></i>
                                             </div>
                                             <div class="col-sm-10 text-justify">
-                                                <a href="mailto:email@something.com">email@something.com</a>
+                                                <a href="mailto:email@something.com">info@tajoutlet.com</a>
                                             </div>
                                         </div>
-                                    </li>    
-                
+                                    </li>                
                                 </ul>
-
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            
         </div>
+        <section class="row copyrights">
+                            {{-- app promotion section --}}
+
+            <div class="col-sm-4">
+                <div class="app-promo">
+                <div class="d-flex justify-content-center">
+<!--                    <h6 class="app-promo-content align-self-center">Download the app now </h6>-->
+                    <div class="app-icon">
+                        <img src="{{asset('img/app_logos/apple.png')}}" alt="">
+                    </div>
+                    <div class="app-icon">
+                        <img src="{{asset('img/app_logos/android.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+            </div>
+
+{{-- banner section --}}
+    </section>
     </div>
 
 </footer>

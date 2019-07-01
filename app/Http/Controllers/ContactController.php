@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Contact;
+use Session;
 
 class ContactController extends Controller
 {
@@ -21,6 +22,7 @@ class ContactController extends Controller
     	$contact->city = $request->input('city');
     	$contact->message = $request->input('message');
     	$contact->save();
+        Session::flash("success", "we will contact you.");
     	return redirect('/contact-us');
     }
 }

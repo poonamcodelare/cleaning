@@ -15,17 +15,20 @@
   
 
 {{-- banner Section --}}
-<section class="hero-section">
+<section class="hero-section main_carousel">
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img class="d-block w-100" src="{{asset('img/banners/banner1.jpg')}}" alt="First slide">
+         <?php $bsr=0;?>
+           @foreach($banner as $banner)
+            <div class="carousel-item bitem{{$bsr++}}">
+            <img class="d-block w-100" src="../../dashboard/public/uploads/banners/{{$banner->Banner_Images}}" alt="First slide">
+             <div class="carousel-caption text-right">
+                <h3 class="text-center">{{$banner->Banner_Title}}</h3>
+                <p class="center-justified">{{$banner->Banner_Content}}</p>
             </div>
-            <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('img/banners/banner2.jpg')}}" alt="Second slide">
             </div>
-            
+            @endforeach                       
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -39,27 +42,13 @@
 
 </section>
 
-{{-- app promotion section --}}
 
-<section class="app-promo">
-    <div class="d-flex justify-content-center">
-        <h6 class="app-promo-content align-self-center">Download the app now </h6>
-        <div class="app-icon">
-            <img src="{{asset('img/app_logos/apple.png')}}" alt="">
-        </div>
-        <div class="app-icon">
-            <img src="{{asset('img/app_logos/android.png')}}" alt="">
-        </div>
-    </div>
-</section>
-
-{{-- banner section --}}
 
 <section class="banner-section">
     <div class="text-center bg-green-dark">
         <h3 class="text-center heading-text banner-green-text">How it works</h3>
     </div>
-    <img class="banner-img"src=" {{asset('img/banners/how-it-works-banner.jpg')}} " alt="">
+    <img class="banner-img"src=" {{asset('img/banners/how-it-works-banner.jpg')}} " alt="" style="width:100%;">
 </section>
 
 {{-- services section --}}
@@ -69,57 +58,21 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 service-container">
-                <div class="col-md-10 offset-md-1 service-box">
-                    <img class="service-icon" src="https://cdn.iconscout.com/icon/free/png-256/shoes-97-160935.png" alt="">
-                    <p class="service-text">lorem service</p>
-                </div>
-            </div>
-            <div class="col-md-3 service-container">
-                <div class="col-md-10 offset-md-1 service-box">
-                    <img class="service-icon" src="https://cdn.iconscout.com/icon/free/png-256/shoes-97-160935.png" alt="">
-                    <p class="service-text">lorem service</p>
-                </div>
-            </div>
-            <div class="col-md-3 service-container">
-                <div class="col-md-10 offset-md-1 service-box">
-                    <img class="service-icon" src="https://cdn.iconscout.com/icon/free/png-256/shoes-97-160935.png" alt="">
-                    <p class="service-text">lorem service</p>
-                </div>
-            </div>
-            <div class="col-md-3 service-container">
-                <div class="col-md-10 offset-md-1 service-box">
-                    <img class="service-icon" src="https://cdn.iconscout.com/icon/free/png-256/shoes-97-160935.png" alt="">
-                    <p class="service-text">lorem service</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{{-- media ads section --}}
-<section class="media-section">
-    <div class="text-center">
-        <h3 class="text-center heading-text">Media Mentions</h3>
-    </div>
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <div class="media-banner col-md-3">
-                <img src="https://media.cdn.gradconnection.com/uploads/7bae1202-5f75-42af-957d-4d6fed98f2b5-Google-Logo.png" alt="">
-            </div>
-            <div class="media-banner col-md-3">
-                <img src="https://media.cdn.gradconnection.com/uploads/7bae1202-5f75-42af-957d-4d6fed98f2b5-Google-Logo.png" alt="">
-            </div>
-            <div class="media-banner col-md-3">
-                <img src="https://media.cdn.gradconnection.com/uploads/7bae1202-5f75-42af-957d-4d6fed98f2b5-Google-Logo.png" alt="">
-            </div>
-            <div class="media-banner col-md-3">
-                <img src="https://media.cdn.gradconnection.com/uploads/7bae1202-5f75-42af-957d-4d6fed98f2b5-Google-Logo.png" alt="">
-            </div>
-        </div>
-    </div>
-    
-</section>
 
+            @foreach($service as $service)
+            <div class="col-md-3 service-container">
+                <div class="col-md-10 offset-md-1 service-box">
+
+                    <img class="service-icon" src="../../dashboard/public/uploads/services/{{$service->service_image}}" alt="">
+
+                    <p class="service-text">{{$service->service_name}}</p>
+                    <p style="padding: 5px 8px;" class="text-center">{{substr($service->service_description,0, 50)}}...</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 {{-- packages and promotion section --}}
 
 <section class="package-section">
@@ -128,83 +81,28 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 package-container">
+             @foreach($package as $package)
+            <div class="col-md-3 package-container mb-2">
+
                 <div class="col-md-12 package-box">
+                    
                     <div class="package-header">
                         <h5>Laundry</h5>
                     </div>
                     <div class="package-body">
-                        <span class="package-price"><i class="fas fa-rupee-sign"></i> 350</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, fugit.</h6>
-                        <hr>
-                        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, incidunt!</h6>
+                        
+                        <span class="package-price"><i class="fas fa-rupee-sign"></i>{{$package->Package_Price}}</span>
+                        <p>{{substr($package->Package_Content,0,240)}}.....</p>
 
                     </div>
                     <div class="package-footer">
                         <h5>T&C Apply</h5>
                     </div>
+                    
                 </div>
+                
             </div>
-            <div class="col-md-3 package-container">
-                <div class="col-md-12 package-box">
-                    <div class="package-header">
-                        <h5>Laundry</h5>
-                    </div>
-                    <div class="package-body">
-                        <span class="package-price"><i class="fas fa-rupee-sign"></i> 350</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, fugit.</h6>
-                        <hr>
-                        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, incidunt!</h6>
-
-                    </div>
-                    <div class="package-footer">
-                        <h5>T&C Apply</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 package-container">
-                <div class="col-md-12 package-box">
-                    <div class="package-header">
-                        <h5>Laundry</h5>
-                    </div>
-                    <div class="package-body">
-                        <span class="package-price"><i class="fas fa-rupee-sign"></i> 350</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, fugit.</h6>
-                        <hr>
-                        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, incidunt!</h6>
-
-                    </div>
-                    <div class="package-footer">
-                        <h5>T&C Apply</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 package-container">
-                <div class="col-md-12 package-box">
-                    <div class="package-header">
-                        <h5>Laundry</h5>
-                    </div>
-                    <div class="package-body">
-                        <span class="package-price"><i class="fas fa-rupee-sign"></i> 350</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, fugit.</h6>
-                        <hr>
-                        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, incidunt!</h6>
-
-                    </div>
-                    <div class="package-footer">
-                        <h5>T&C Apply</h5>
-                    </div>
-                </div>
-            </div>
-     
+            @endforeach
         </div>
     </div>
 </section>
@@ -216,7 +114,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col why-us-container">
+            <div class="col-6 col-md-3 col why-us-container mb-2">
                 <div class="col-md-12 why-us-box">
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
@@ -225,14 +123,14 @@
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
-                            <h6>BEST IN CLASS EQUIPMENT AND DETERGENTS</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cupiditate nihil aliquam odit unde enim eum iure corporis accusamus fugiat.</p>
+                            <h6>Pick and Delivery clothes</h6>
+                            <p>Pick My Laundry provides premium washing and dry cleaning service leveraging mobile based technology. We pick up your dirty duds from your doorstep and deliver fresh, clean clothes back at your doorstep.</p>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col why-us-container">
+            <div class="col-6 col-md-3 col why-us-container mb-2">
                 <div class="col-md-12 why-us-box">
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
@@ -241,30 +139,15 @@
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
-                            <h6>BEST IN CLASS EQUIPMENT AND DETERGENTS</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cupiditate nihil aliquam odit unde enim eum iure corporis accusamus fugiat.</p>
+                            <h6>clothes cleaning</h6>
+                            <p>We also make sure that we thoroughly clean all the clothes that come to us. We aren't like those services who just place tons of perfume on to the clothes to make it seem like it is clean.</p>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col why-us-container">
-                <div class="col-md-12 why-us-box">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 why-us-img-container">
-                                
-                            <img src=" {{asset('img/vectors/why-us-3.png')}} " alt="why-choose-us" class="why-us-img">
-                                    
-                        </div>
-                        <div class="col-md-12 why-us-content">
-                            <h6>BEST IN CLASS EQUIPMENT AND DETERGENTS</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cupiditate nihil aliquam odit unde enim eum iure corporis accusamus fugiat.</p>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="col why-us-container">
+           
+            <div class="col-6 col-md-3 col why-us-container">
                 <div class="col-md-12 why-us-box">
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
@@ -274,13 +157,13 @@
                         </div>
                         <div class="col-md-12 why-us-content">
                             <h6>BEST IN CLASS EQUIPMENT AND DETERGENTS</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cupiditate nihil aliquam odit unde enim eum iure corporis accusamus fugiat.</p>
+                            <p>Choosing Laundry DetergentsYour choice of the best laundry detergent should be based on the kinds of clothes that need to be cleaned. If the clothes are excessively soiled, then you should choose powerful detergents.</p>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col why-us-container">
+            <div class="col-6 col-md-3 col why-us-container">
                 <div class="col-md-12 why-us-box">
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
@@ -289,8 +172,8 @@
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
-                            <h6>BEST IN CLASS EQUIPMENT AND DETERGENTS</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cupiditate nihil aliquam odit unde enim eum iure corporis accusamus fugiat.</p>
+                            <h6>washing Machine quality</h6>
+                            <p>Comfort, performance and energy-efficiency: Siemens washing machines always offer you state-of-the-art technology. Innovative functions not only provide optimal results, they also make your life easier.</p>
                         </div>
                     </div>
                    
@@ -302,103 +185,43 @@
 {{-- Testimonial section --}}
 
 <section class="testimonial-section">
-    <div class="text-center">
-        <h3 class="text-center heading-text">Testimonials</h3>
-    </div>
+   
     <div class="container">
-        <div class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="testimonial-box">
-                    <div class="testimonial-header">
-                        <div class="row">
-                            <div class="col-md-3 avatar-img-container">
-                                <img class="avatar-img" src="{{asset('img/avatar-male.jpg')}} " alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <h5>Customer Name</h5>                    
-                                <p class="testimonial-subtitle">( Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. )</p>
-                                
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="testimonial-body">
-                        <hr>
-                        <p class="testimonial-content">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus soluta ad veritatis ipsam vitae rem consectetur aut perspiciatis facilis ea.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-box">
-                    <div class="testimonial-header">
-                        <div class="row">
-                            <div class="col-md-3 avatar-img-container">
-                                <img class="avatar-img" src="{{asset('img/avatar-male.jpg')}} " alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <h5>Customer Name</h5>                    
-                                <p class="testimonial-subtitle">( Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. )</p>
-                                
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="testimonial-body">
-                        <hr>
-                        <p class="testimonial-content">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus soluta ad veritatis ipsam vitae rem consectetur aut perspiciatis facilis ea.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-box">
-                    <div class="testimonial-header">
-                        <div class="row">
-                            <div class="col-md-3 avatar-img-container">
-                                <img class="avatar-img" src="{{asset('img/avatar-male.jpg')}} " alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <h5>Customer Name</h5>                    
-                                <p class="testimonial-subtitle">( Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. )</p>
-                                
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="testimonial-body">
-                        <hr>
-                        <p class="testimonial-content">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus soluta ad veritatis ipsam vitae rem consectetur aut perspiciatis facilis ea.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-box">
-                    <div class="testimonial-header">
-                        <div class="row">
-                            <div class="col-md-3 avatar-img-container">
-                                <img class="avatar-img" src="{{asset('img/avatar-male.jpg')}} " alt="">
-                            </div>
-                            <div class="col-md-9">
-                                <h5>Customer Name</h5>                    
-                                <p class="testimonial-subtitle">( Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. )</p>
-                                
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="testimonial-body">
-                        <hr>
-                        <p class="testimonial-content">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus soluta ad veritatis ipsam vitae rem consectetur aut perspiciatis facilis ea.
-                        </p>
-                    </div>
-                </div>
-            </div>
-           
+        <div class="row">
+    <div class="col-md-8 col-center m-auto">
+      <h2 class="text-center">Testimonials</h2>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+        <?php $doted=0;?>
+        <?php $dotedcl=0;?>
+         @foreach($testimonial as $test_doted)
+          <li data-target="#myCarousel" data-slide-to="{{$doted++}}" class="li{{$dotedcl++}}" style="width:30px;"></li>
+          @endforeach
+        </ol>
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+         <?php $dote=0;?>
+          @foreach($testimonial as $testimonial)
+          <div class="item carousel-item item{{$dote++}}">
+            <div class="img-box"><img src="../../dashboard\public\uploads\testimonials/{{$testimonial->Testimonial_Images}}" alt=""></div>
+            <p class="testimonial">{{$testimonial->Testimonial_Contents}}</p>
+            <p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
+          </div>
+          @endforeach          
         </div>
+        <!-- Carousel controls -->
+        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
     </div>
 </section>
+
 
 @endsection
 
@@ -421,7 +244,12 @@ $('.owl-carousel').owlCarousel({
             items:3
         }
     }
-})
+});
+    $(document).ready(function(){
+        $(".testimonial-section .carousel-indicators .li0").attr('class', 'active li0');
+    $(".carousel-inner .item0").attr('class', 'active item0 item carousel-item');
+    $(".main_carousel .carousel-inner .bitem0").attr('class', 'active bitem0 carousel-item');
+   }); 
 </script>
 
 
