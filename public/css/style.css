@@ -727,14 +727,7 @@ body {
 }
 /*sign in and signup page end*/
 
-.modal-dialog{
-   
-    /*position: relative;bottom:100px;*/
-}
 
-/*.footer-margin{
-    margin-top: -246px;
-}*/
 .copyrights{
     height: 50px;
     clear: both;
@@ -843,8 +836,8 @@ label {
 }
 
 .btn {
-  background-color: #4CAF50;
-  color: white;
+  /*background-color: #4CAF50;*/
+  color: black;
   padding: 12px;
   margin: 10px 0;
   border: none;
@@ -855,7 +848,7 @@ label {
 }
 
 .btn:hover {
-  background-color: #45a049;
+  /*background-color: #45a049;*/
 }
 
 a {
@@ -900,6 +893,7 @@ span.price {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background-color: #28a745;
 }
 
 .card .card-heading {
@@ -1127,3 +1121,23 @@ span.price {
 }
 
 /*.btns{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }*/
+
+
+#newbtn{
+    margin-left:-150px;
+}
+
+#detail{
+    float: left;margin-left:-120px;margin-bottom: 10px;color: white;
+}
+
+@media(min-width: 768px) {
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+  }
+}
+
+.facilities-date{
+    margin-top: 12px;
+}

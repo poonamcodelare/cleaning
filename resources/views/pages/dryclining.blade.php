@@ -27,7 +27,7 @@
   
 
         <div>
-            <img src="{{asset('img/dry-cleaning_banner.jpg')}}" alt="img" style="width:100%;height: 50%;">
+            <img src="{{asset('public/img/dry-cleaning_banner.jpg')}}" alt="img" style="width:100%;height: 50%;">
         </div>
 
     </div>

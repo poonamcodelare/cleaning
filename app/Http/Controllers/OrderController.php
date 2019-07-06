@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Service;
 use App\Order;
+use App\location;
+use App\Category;
 use Validator;
 Use DB;
 use Session;
@@ -16,8 +18,10 @@ class OrderController extends Controller
 {
      public function index(){
       $service=Service::all();
+      $city = location::all();
+      $category = Category::all();
       $user = Auth::user();
-      return view('pages.order',compact('user', 'service'));
+      return view('pages.order',compact('user', 'service', 'city', 'category'));
     }
 
    //    public function store(Request $request)

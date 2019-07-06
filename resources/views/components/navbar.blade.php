@@ -4,7 +4,7 @@
         
     <div class="container">
         
-            <a href="{{url('/')}}" class="navbar-brand logo">LOGO</a>
+            <a href="{{url('/')}}" class="navbar-brand logo">TajOutlet</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapseContainer">
                 <span class="navbar-toggler-icon"></span>
@@ -52,11 +52,11 @@
                                Locate us
                         </a>
                     </li>
-                    <li class="nav-item">
+                 <!--    <li class="nav-item">
                         <a href="{{url('/mygallery')}}" class="nav-link">
                         Gallery
                        </a>
-                    </li>
+                    </li> -->
                 
                     {{-- <li class="nav-item">
                         <a href="{{url('/blog')}}" class="nav-link">

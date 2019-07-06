@@ -23,11 +23,11 @@ Route::get('book-service', function(){
 
 
 // my order
-Route::get('orders', 'OrderController@index')->middleware('auth');
+Route::get('orders', 'OrderController@index');
 // Route::post('orders', 'OrderController@store')->middleware('auth');
 
 Route::post('orders', 'CommonController@store');
-// Route::post('checkout', 'CommonController@show');
+
 
 
 
@@ -94,7 +94,9 @@ Route::get('gallery','GalleryController@index');
 // Route::post('/contact-us','ContactController@index');
 Route::post('/contact-us-now','ContactController@store');
 
-Route::get('/checkout','CheckoutController@index');
+
+
+
 
 
 

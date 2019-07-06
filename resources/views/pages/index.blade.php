@@ -20,9 +20,10 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
          <?php $bsr=0;?>
+         
            @foreach($banner as $banner)
             <div class="carousel-item bitem{{$bsr++}}">
-            <img class="d-block w-100" src="../../dashboard/public/uploads/banners/{{$banner->Banner_Images}}" alt="First slide">
+            <img class="d-block w-100" src="../dashboard/public/uploads/banners/{{$banner->Banner_Images}}" alt="First slide">
              <div class="carousel-caption text-right">
                 <h3 class="text-center">{{$banner->Banner_Title}}</h3>
                 <p class="center-justified">{{$banner->Banner_Content}}</p>
@@ -48,7 +49,7 @@
     <div class="text-center bg-green-dark">
         <h3 class="text-center heading-text banner-green-text">How it works</h3>
     </div>
-    <img class="banner-img"src=" {{asset('img/banners/how-it-works-banner.jpg')}} " alt="" style="width:100%;">
+    <img class="banner-img"src=" {{asset('public/img/banners/how-it-works-banner.jpg')}} " alt="" style="width:100%;">
 </section>
 
 {{-- services section --}}
@@ -63,10 +64,10 @@
             <div class="col-md-3 service-container">
                 <div class="col-md-10 offset-md-1 service-box">
 
-                    <img class="service-icon" src="../../dashboard/public/uploads/services/{{$service->service_image}}" alt="">
+                    <img class="service-icon" src="../dashboard/public/uploads/services/{{$service->service_image}}" alt="">
 
                     <p class="service-text">{{$service->service_name}}</p>
-                    <p style="padding: 5px 8px;" class="text-center">{{substr($service->service_description,0, 50)}}...</p>
+                    <p style="padding: 5px 8px;" class="text-center">{{substr($service->service_description,0, 150)}}...</p>
                 </div>
             </div>
             @endforeach
@@ -119,7 +120,7 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
                                 
-                            <img src=" {{asset('img/vectors/why-us-1.png')}} " alt="why-choose-us" class="why-us-img">
+                            <img src=" {{asset('public/img/vectors/why-us-1.png')}} " alt="why-choose-us" class="why-us-img">
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
@@ -135,7 +136,7 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
                                 
-                            <img src=" {{asset('img/vectors/why-us-2.png')}} " alt="why-choose-us" class="why-us-img">
+                            <img src=" {{asset('public/img/vectors/why-us-2.png')}} " alt="why-choose-us" class="why-us-img">
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
@@ -152,7 +153,7 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
                                 
-                            <img src=" {{asset('img/vectors/why-us-5.png')}} " alt="why-choose-us" class="why-us-img">
+                            <img src=" {{asset('public/img/vectors/why-us-5.png')}} " alt="why-choose-us" class="why-us-img">
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
@@ -168,7 +169,7 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 why-us-img-container">
                                 
-                            <img src=" {{asset('img/vectors/why-us-6.png')}} " alt="why-choose-us" class="why-us-img">
+                            <img src=" {{asset('public/img/vectors/why-us-6.png')}} " alt="why-choose-us" class="why-us-img">
                                     
                         </div>
                         <div class="col-md-12 why-us-content">
@@ -204,7 +205,7 @@
          <?php $dote=0;?>
           @foreach($testimonial as $testimonial)
           <div class="item carousel-item item{{$dote++}}">
-            <div class="img-box"><img src="../../dashboard\public\uploads\testimonials/{{$testimonial->Testimonial_Images}}" alt=""></div>
+            <div class="img-box"><img src="../dashboard\public\uploads\testimonials/{{$testimonial->Testimonial_Images}}" alt=""></div>
             <p class="testimonial">{{$testimonial->Testimonial_Contents}}</p>
             <p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
           </div>
@@ -227,7 +228,7 @@
 
 @section('scripts')
 
-<script src="{{asset('js/owl.carousel.min.js')}} "></script>
+<script src="{{asset('public/js/owl.carousel.min.js')}} "></script>
 <script>
 $('.owl-carousel').owlCarousel({
     loop:true,

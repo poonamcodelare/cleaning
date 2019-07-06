@@ -56,9 +56,9 @@ button:hover, a:hover {
       <figure class="customer_profile_image">
         <span class="badge badge-info" data-toggle="modal" data-target="#profilePicture"><i class="fa fa-upload"></i></span>
         @if(strlen($user->Profile_Image) == "")
-         <img src="{{asset('img/new.png')}}" alt="the company logo" width="80px; height="80px">
+         <img src="{{asset('public/img/new.png')}}" alt="the company logo" width="80px; height="80px">
          @else
-         <img src="{{asset('uploads/'.$user->Profile_Image)}}" alt="the company logo" width="80px; height="80px;">
+         <img src="{{asset('public/uploads/'.$user->Profile_Image)}}" alt="the company logo" width="80px; height="80px;">
          @endif
       </figure>
     
@@ -115,7 +115,7 @@ button:hover, a:hover {
       
         <div class="modal-body">
                <div class="row justify-content-center">
-                  <form action="/profile" method="post" enctype="multipart/form-data">
+                  <form action="profile" method="post" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
                           <input type="file" class="form-control-file" name="image" id="avatarFile" aria-describedby="fileHelp">
@@ -131,13 +131,6 @@ button:hover, a:hover {
       </div>
     </div>
   </div>
-
-
-
- 
-
-
-
 </body>
 </html>
 

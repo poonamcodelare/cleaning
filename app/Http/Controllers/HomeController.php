@@ -17,6 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+       $visitors=DB::table('visitors')->where('Page_Id', 1)->increment('Visit_Count',1);
        
     }
 

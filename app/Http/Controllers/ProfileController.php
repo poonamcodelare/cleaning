@@ -40,45 +40,6 @@ class ProfileController extends Controller
          Session::flash("success", "You have successfully upload image.");
          return back();
 
-
-
-        //  $uploaded_image = User::find($id)->get(['Profile_Image']);
-        // $uploaded_image = $uploaded_image[0]->Profile_Image;
-        //  $validator = Validator::make($request->all(),
-        //     [
-        //       'image' =>  'required',
-        //     ],
-        //     [
-        //       'image.required' => trans('auth.imageRequired'),
-        //     ]
-        // );
-
-        // if ($validator->fails()) {
-        //     return back()->withErrors($validator)->withInput();
-        // }
-          
-        // else{   
-          
-        //     if (Input::hasFile('Profile_Image')) {
-
-        //         $user = Auth::user();
-        //          $imageName = $user->id.'_profile'.time().'.'.request()->image->getClientOriginalExtension();
-
-        //         request()->image->move(storage_path('uploads'), $imageName);
-
-        //        $user->Profile_Image = $imageName;
-        //        $user->save();
-        
-
-        //       if(file_exists('./storage/uploads/'.$uploaded_image)){
-                  
-        //           unlink('./storage/uploads/'.$uploaded_image);
-        //          }
-
-        //       }
-        // }
-        // Session::flash("success", "You have successfully upload image.");
-        //  return back();
             
     }
 

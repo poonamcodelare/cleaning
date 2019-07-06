@@ -78,17 +78,14 @@
                                         <h5 class="card-title ">${price.service.service_name}</h5>
                                         <p class="card-text ">
                                         <span class="package-price text-light "><i class="fas fa-rupee-sign"></i> ${price.Amount} </span> /  <span class="lead">
-                                                ${price.unit}
+                                                ${price.Unit}
                                         </span>
+
+                                    
                                         </p>
                                         <p>Minimum Load : 5kg</p>
-                                        <ul class="list-group text-dark">
-                                            <li class="list-group-item"> <span class="package-addon"> Add Ons </span> </li>
-                                            @foreach ($addons as $addon)
-                                                <li class="list-group-item"> {{$addon->name}} <span class="small    ">({{$addon->price}}/{{$addon->unit}})</span> </li>
-                                            @endforeach
-                                            
-                                        </ul>
+                                        <p style="color:black">${price.service.service_description}</p>
+                                      
                                     </div>
                                 </div>
                             </div>

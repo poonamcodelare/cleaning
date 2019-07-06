@@ -8,7 +8,7 @@
                     
                     <div class="footer-box col-12 text-justify">
                         <div class="footer-logo">
-                            <img src="{{asset('img/logo.png')}}" alt="the company logo">
+                            <img src="{{asset('public/img/logo.png')}}" alt="the company logo">
                         </div>
                         <div class="footer-content">
                             At UClean, we are building India's first organized chain of laundry and home cleaning stores, focused on fostering the DIY (Do It Yourself) culture. With technology at the heart of the brand, UClean also enables the time crunched customers to avail pick-n- drop service from the comforts of their home or office.
@@ -26,10 +26,10 @@
                             <div class="col-md-6 footer-item"> <a href="/about-us">About us</a> </div>
                             <div class="col-md-6 footer-item"> <a href="/prices">Dry Cleaning</a> </div>
                             <div class="col-md-6 footer-item"> <a href="/locate-us">Locate us</a> </div>
-                             <div class="col-md-6 footer-item"> <a href="/blog">Home Cleaning</a> </div>
-                            <div class="col-md-6 footer-item"> <a href="/donate">Privacy Policy</a> </div>
-                            <div class="col-md-6 footer-item"> <a href="/donate">Sitemap</a> </div>
-                            <div class="col-md-6 footer-item"> <a href="/donate">Terms & Conditions</a> </div>
+                             <div class="col-md-6 footer-item"> <a href="/blog"><!-- Home Cleaning --></a> </div>
+                            <div class="col-md-6 footer-item"> <a href="/donate"><!-- Privacy Policy --></a> </div>
+                            <div class="col-md-6 footer-item"> <a href="/donate"><!-- Sitemap --></a> </div>
+                            <div class="col-md-6 footer-item"> <a href="/donate"><!-- Terms & Conditions --></a> </div>
                             
 
                             

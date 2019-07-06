@@ -9,74 +9,95 @@
 
 @section('content')
 <!-- order modal -->
-	<div>
-	  
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-capitalize" id="exampleModalLabel1">order your laundry</h5>
-			
-				</div>
-				<div class="modal-body">
-					@if($errors->any())
-						@foreach($errors->all() as $errors)
-							<div class="alert alert-info">{{$errors}}</div>	
-						@endforeach
-					@endif
+<form action="orders" method="post" class="p-3" autocomplete="off">
+@csrf
+	<div class="container-fluid">
+	  <div class="row">
+	  	@if($errors->any())
+		@foreach($errors->all() as $errors)
+				<div class="alert alert-info">{{$errors}}</div>	
+			@endforeach
+		@endif
 
-					  @if(Session::has('success'))
-				    <div class="alert alert-info">
-				       {{Session::get('success')}}
-				    </div>
-				   @endif 
-					<form action="orders" method="post" class="p-3" autocomplete="off">
-						@csrf
-						<div class="form-group">
-						<!-- 	@isset($user->id) -->
-							<input type="hidden" class="form-control" name="User_Id" id="name" value="{{$user->id}}">
-						<!-- 	@endisset -->
-						</div>
-						<div class="form-group">
-							<input type="hidden" class="form-control" name="Order_Title" id="Order_Title" value="test_title">
-						</div>
-						<div class="form-group">
-							<input type="hidden" class="form-control" name="Order_Types" id="Order_Types">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" name="Order_content" id="Order_content" placeholder="Order Content">
-						</div>
-						<div class="form-group">
-							<input type="hidden" class="form-control" name="Payments" id="Payments">
-						</div>
+		  @if(Session::has('success'))
+	    <div class="alert alert-info">
+	       {{Session::get('success')}}
+	    </div>
+	   @endif 
 
-						<div class="form-group">
-							<label class="mr-2 col-form-label">Pick Up</label>
-							<input id="dt1" name="check_in" type="text" class="form-control" placeholder="PickDate">
-						</div>
-						<div class="form-group">
-							<label class="mr-2 col-form-label">Delivery</label>
-							<input id="dt2" name="check_out" type="text" class="form-control" placeholder="DropDate">
-						</div>
+	    <input type="hidden" class="form-control" name="User_Id" id="name" value="">
 
-						  <div class="form-group">
-                            <label for="service">Select Services</label>
-                            
-                            <select name="Service_Id" id="service" class="form-control">
-                            	   <option value="">Select Service</option>
-                               @foreach($service as $service)                               
-                            	<option value="{{$service->id}}">{{$service->service_name}}</option>
-                              @endforeach
-                            </select>
+	      <input type="hidden" class="form-control" name="Order_Title" id="Order_Title" value="">
 
-                        </div>
-						
-							<input type="submit" name="submit" class="form-control btn btn-success" value="Order">
-					
-					</form>
+	      <input type="hidden" class="form-control" name="Order_Types" id="Order_Types">
 
-				</div>
-			</div>
-		</div>
-	</div>
-	
+	      <input type="hidden" class="form-control" name="Order_content" id="Order_content" placeholder="Order Content">
+
+	      <input type="hidden" class="form-control" name="Payments" id="Payments">
+<!-- City -->
+			<div class="col-sm-2">  
+				<div class="facilities-city">  
+				<span class="label">Select City</span>
+                 <select name="City_Id" id="city"  class="form-control">
+            	   <option value="">Select City</option>
+            	    @foreach($city as $city)                               
+	            	<option value="{{$city->id}}">{{$city->name}}</option>
+	                @endforeach
+                 </select>
+                </div>
+		  </div>
+<!-- Service -->
+		    <div class="col-sm-2">
+		    	<div class="facilities">
+		    		<span class="label">Select Service</span>
+				    <span class="input">
+				        <select name="Service_Id[]" id="service" class="selectpicker" multiple data-live-search="true">
+				          <option value="">Select Service</option>
+			               @foreach($service as $service)                               
+			            	<option value="{{$service->id}}">{{$service->service_name}}</option>
+			               @endforeach
+				        </select>
+				    </span>
+			   </div>
+		    </div>
+
+
+		    <div class="col-sm-2">
+	            <div class="facilities-cat" style="margin:0px;">
+		    		<span class="label">Select Category</span>
+				    <span class="input">
+				        <select name="Category_Id[]" id="category" class="selectpicker" multiple data-live-search="true">
+				           <option value="">Select Category</option>
+			               @foreach($category as $category)                               
+			               <option value="{{$category->id}}">{{$category->category_name}}</option>
+			              @endforeach
+				        </select>
+				    </span>
+			   </div>
+		    </div>
+
+		    <div class="col-sm-2">
+		    	<div class="facilities-date">
+			    	<span>PickDate</span>
+		            <input id="dt1" name="check_in" type="text" class="form-control">
+	           </div>
+		    </div>
+		    <div class="col-sm-2">
+		    	<div class="facilities-date">
+			    	<span>DropDate</span>
+		      		<input id="dt2" name="check_out" type="text" class="form-control">
+		      	</div>
+		    </div>
+
+		    <div class="col-sm-2">
+		    	<div class="facilities-h">
+		    		<p></p>
+		    	   <input type="submit" name="submit" class="form-control btn btn-success" value="Order" style="background-color: #4ea453;padding: 0px;">
+		    	</div>
+		    </div>
+
+	    
+	  </div>
+   </div>
+ </form>
 	@endsection

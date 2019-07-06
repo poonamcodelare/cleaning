@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Contact;
 use App\User;
 use App\Service;
+use App\Category;
+use App\Location;
 use App\Order;
 use Validator;
 Use DB;
@@ -20,12 +22,18 @@ class CommonController extends Controller
 
      public function store(Request $request)
 	    {
+        // echo "<pre>";
+        // print_r($_POST);
+        // exit();
+
 	    	Validator::make($request->all(),
 	    			[
-			'User_Id' => 'required',
+			// 'User_Id' => 'required',
 			'check_in' => 'required',
 			'check_out' => 'required',
 			'Service_Id' => 'required',
+      'City_Id' => 'required',
+      'Category_Id' => 'required',
 
 	    ])->validate();
 
@@ -35,22 +43,40 @@ class CommonController extends Controller
 	    	 $newCOdate=date("Y-m-d", $cods);
              
              $new = [
-        	    'User_Id' => $request->input('User_Id'),
+        	    // 'User_Id' => $request->input('User_Id'),
              	'PickUp_At' => $newCIdate,
              	'Delivery_At' => $newCOdate,
-             	'Service_Id' => $request->input('Service_Id'),
+              'Service_Id' => $request->input('Service_Id'),
+              'City_Id' => $request->input('City_Id'),
+             	'Category_Id' => $request->input('Category_Id'),
              	'Order_Title' => $request->input('Order_Title'),
              	'Order_Types' => $request->input('Order_Types'),
              	'Order_content' => $request->input('Order_content'),
              	'Payments' => $request->input('Payments'),
-             	
-
+            
              ];
 
+
+          foreach($new['Category_Id'] as $key => $value){
+             $obj = \App\Category::where('id', $value)->get(['id','category_name'])->toArray();
+             $cats[] = $obj;
+          }           
+           
+          foreach ($new['Service_Id'] as $key => $value) {
+
+            $object =  \App\Service::where('id', $value)->get();
+            $abc[] = $object;
+
+          }
+
          $data = \App\Service::where('id', $new['Service_Id'])->get(['id','service_name','service_price']);
+
+          $city = \App\location::where('id', $new['City_Id'])->get(['id','name']);
+
+          $category = \App\Category::where('id', $new['Category_Id'])->get(['id','category_name']);
    	
    		 $user = Auth::user();
-           return view('pages.checkout',compact('new','data','user'));
+           return view('pages.checkout',compact('new','data','user','city','category', 'abc','cats'));
       
 	    }
 
