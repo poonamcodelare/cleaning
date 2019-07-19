@@ -56,7 +56,6 @@ class ProfileController extends Controller
            $user->Phone_Number = $request->input('phone');
            $user->Address = $request->input('address');
            $user->email = $request->input('email');
-           // $user->password = $request->input('password');
            $user->save();
            return redirect('profile');
        }

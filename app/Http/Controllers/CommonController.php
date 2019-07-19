@@ -20,6 +20,47 @@ class CommonController extends Controller
     	return view('pages.dryclining');
     }
 
+    public function new(Request $request){
+
+   
+         $cids=strtotime($request->input('pickdate'));
+         $newCIdate=date("Y-m-d", $cids);
+         $cods=strtotime($request->input('dropdate'));
+         $newCOdate=date("Y-m-d", $cods);
+
+         $a=$request->input('check_in');
+         $b=$request->input('check_out');
+             
+             $new = [
+              'User_Id' => $request->input('User_Id'),
+              'Service_Id' => $request->input('Service_Id'),
+              'City_Id' => $request->input('City_Id'),
+              'pickupdate' => $newCIdate,
+              'deliverydate' => $newCOdate,
+              'Order_Title' => $request->input('Order_Title'),
+              'Order_Types' => $request->input('Order_Types'),
+              'Order_content' => $request->input('Order_content'),
+              'Payments' => $request->input('Payments'),
+            
+             ];
+
+            $ghs = $request->input('Service_Id');
+
+          
+           $data = \App\Service::where('id', $new['Service_Id'])->get(['id','service_name','service_price']);
+
+          $city = \App\location::where('id', $new['City_Id'])->get(['id','name']);
+
+          $user = Auth::user();
+
+           return view('pages.checkout', compact('new','data','user','city','abc','ghs','a','b'));
+
+
+
+  }
+
+
+
      public function store(Request $request)
 	    {
         // echo "<pre>";
@@ -29,11 +70,11 @@ class CommonController extends Controller
 	    	Validator::make($request->all(),
 	    			[
 			// 'User_Id' => 'required',
-			'check_in' => 'required',
-			'check_out' => 'required',
+			// 'check_in' => 'required',
+			// 'check_out' => 'required',
 			'Service_Id' => 'required',
       'City_Id' => 'required',
-      'Category_Id' => 'required',
+      // 'Category_Id' => 'required',
 
 	    ])->validate();
 
@@ -44,11 +85,11 @@ class CommonController extends Controller
              
              $new = [
         	    // 'User_Id' => $request->input('User_Id'),
-             	'PickUp_At' => $newCIdate,
-             	'Delivery_At' => $newCOdate,
+             	// 'PickUp_At' => $newCIdate,
+             	// 'Delivery_At' => $newCOdate,
               'Service_Id' => $request->input('Service_Id'),
               'City_Id' => $request->input('City_Id'),
-             	'Category_Id' => $request->input('Category_Id'),
+             	//'Category_Id' => $request->input('Category_Id'),
              	'Order_Title' => $request->input('Order_Title'),
              	'Order_Types' => $request->input('Order_Types'),
              	'Order_content' => $request->input('Order_content'),
@@ -57,10 +98,10 @@ class CommonController extends Controller
              ];
 
 
-          foreach($new['Category_Id'] as $key => $value){
-             $obj = \App\Category::where('id', $value)->get(['id','category_name'])->toArray();
-             $cats[] = $obj;
-          }           
+          // foreach($new['Category_Id'] as $key => $value){
+          //    $obj = \App\Category::where('id', $value)->get(['id','category_name'])->toArray();
+          //    $cats[] = $obj;
+          // }           
            
           foreach ($new['Service_Id'] as $key => $value) {
 
@@ -73,13 +114,11 @@ class CommonController extends Controller
 
           $city = \App\location::where('id', $new['City_Id'])->get(['id','name']);
 
-          $category = \App\Category::where('id', $new['Category_Id'])->get(['id','category_name']);
+         // $category = \App\Category::where('id', $new['Category_Id'])->get(['id','category_name']);
    	
-   		 $user = Auth::user();
-           return view('pages.checkout',compact('new','data','user','city','category', 'abc','cats'));
+   		    $user = Auth::user();
+           return view('pages.checkout',compact('new','data','user','city', 'abc'));
       
 	    }
-
-    
     
 }

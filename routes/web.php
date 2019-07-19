@@ -23,10 +23,14 @@ Route::get('book-service', function(){
 
 
 // my order
-Route::get('orders', 'OrderController@index');
+// Route::get('orders', 'OrderController@index');
 // Route::post('orders', 'OrderController@store')->middleware('auth');
 
-Route::post('orders', 'CommonController@store');
+// Route::post('orders', 'CommonController@store');
+
+// Route::get('neworder', 'CommonController@store');
+
+Route::post('order', 'CommonController@new');
 
 
 
@@ -47,7 +51,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/mygallery','HomeController@gallery')->name('mygallery');
 
 Route::get('/', 'HomeController@index');
-Route::get('index', 'HomeController@index');
+Route::post('orders', 'HomeController@store');
+Route::get('orders', 'HomeController@show');
 
 Route::get('scategory/{id}','HomeController@service');
 

@@ -16,11 +16,9 @@
 
 {{-- banner Section --}}
 <section class="hero-section main_carousel">
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-         <?php $bsr=0;?>
-         
+         <?php $bsr=0;?>        
            @foreach($banner as $banner)
             <div class="carousel-item bitem{{$bsr++}}">
             <img class="d-block w-100" src="../dashboard/public/uploads/banners/{{$banner->Banner_Images}}" alt="First slide">
@@ -46,6 +44,86 @@
 
 
 <section class="banner-section">
+    <!--Add order -->
+<h3 class="text-center" style="margin: auto;padding: 30px;">Schedule One or More Services from Tajoutlet</h3>
+<form action="orders" method="post" class="p-3" autocomplete="off">
+@csrf
+    <div class="container">
+      <div class="row">
+        @if($errors->any())
+        @foreach($errors->all() as $errors)
+                <div class="alert alert-info">{{$errors}}</div> 
+            @endforeach
+        @endif
+
+          @if(Session::has('success'))
+        <div class="alert alert-info">
+           {{Session::get('success')}}
+        </div>
+       @endif 
+
+        <input type="hidden" class="form-control" name="User_Id" id="name" value="">
+
+          <input type="hidden" class="form-control" name="Order_Title" id="Order_Title" value="">
+
+          <input type="hidden" class="form-control" name="Order_Types" id="Order_Types">
+
+          <input type="hidden" class="form-control" name="Order_content" id="Order_content" placeholder="Order Content">
+
+          <input type="hidden" class="form-control" name="Payments" id="Payments">
+<!-- City -->
+            <div class="col-sm-2">  
+                <div class="facilities-city">  
+                <span class="label">Select City</span>
+                 <select name="City_Id" id="city"  class="form-control">
+                   <option value="">Select City</option>
+                    @foreach($city as $city)                               
+                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    @endforeach
+                 </select>
+                </div>
+          </div>
+<!-- Service -->
+            <div class="col-sm-8">
+                <div class="facilities-city">
+                    <span class="label">Select Service</span>
+                    <span class="input">
+                        <select name="Service_Id[]" id="service" class="selectpicker" multiple data-live-search="true">
+                          <option value="">Select Service</option><br>
+                           @foreach($service as $service_loc)                               
+                            <option value="{{$service_loc->id}}">{{$service_loc->service_name}}</option>
+                           @endforeach
+                        </select>
+                    </span>
+               </div>
+            </div>
+
+          <!--   <div class="col-sm-2">
+                <div class="facilities-date">
+                    <span class="label">PickDate</span>
+                    <input id="dt1" name="check_in" type="text" class="form-control" placeholder="PickDate">
+               </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="facilities-date">
+                    <span class="label">DropDate</span>
+                    <input id="dt2" name="check_out" type="text" class="form-control" placeholder="DropDate">
+                </div>
+            </div>
+ -->
+            <div class="col-sm-2">
+                <div class="facilities-h">
+                    <p></p>
+                   <input type="submit" name="submit" class="form-control btn btn-success" value="Order" style="background-color: #4ea453;padding: 0px;color: white">
+                </div>
+            </div>
+
+        
+      </div>
+   </div>
+ </form>
+
+<!-- End order -->
     <div class="text-center bg-green-dark">
         <h3 class="text-center heading-text banner-green-text">How it works</h3>
     </div>

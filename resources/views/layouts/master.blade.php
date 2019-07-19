@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="{{asset('public/css/bootstrap-multiselect.css')}}"> -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 </head>
-<body>
+<body onload="myfun();">
 
         @include('components.navbar')
         
@@ -102,32 +102,32 @@
                 });
             </script> -->
              <script>
-            $(document).ready(function () {    
+             $(document).ready(function () {    
                    var d = new Date();
-                   var currMonth = d.getMonth();
+                    var currMonth = d.getMonth();
                    var currYear = d.getFullYear();
-                   var startDate = new Date(currYear, currMonth, 1);
+                    var startDate = new Date(currYear, currMonth, 1);
                    var newdate = new Date();
-                   newdate.setDate(newdate.getDate() + 5);
+                   newdate.setDate(newdate.getDate() + 3);
 
-                   $("#dt1").datepicker({
-                        startDate : new Date()   
+               $("#dt1").datepicker({
+                    startDate : new Date()   
 
-                   });
+                });
                    $("#dt2").datepicker({
-                    startDate : newdate
-                   });
+                     startDate : newdate
+                });
 
-                   // date value view
-                    $("#dt2").on('change', function(){
-                    var dd1= $("#dt1").val();
-                    var dd2= $("#dt2").val();
-                  //  console.log(dd2);
-                    $("#demo").html('Pick Date:'+ dd1 +'<br> Drop date: '+ dd2);
-                    });
+               // date value view
+                   $("#dt2").on('change', function(){
+                     var dd1= $("#dt1").val();
+                     var dd2= $("#dt2").val();
+                   //  console.log(dd2);
+                     $("#demo").html('Pick Date:'+ dd1 +'<br> Drop date: '+ dd2);
+                     });
 
 
-                 });
+                  });
 
             </script>
 
@@ -146,6 +146,8 @@
 
                     });
             </script>
+
+           
 
 
 

@@ -95,14 +95,14 @@
                         </li>
                     @endif
 
-                    <li class="nav-item link-highlight">
+                   <!--  <li class="nav-item link-highlight">
                        
                         <a href="{{url('orders')}}" class="nav-link btn btn-success text-light">
                         Order
                        </a>
                    
                     </li>
-
+ -->
 
                    
                 </ul>

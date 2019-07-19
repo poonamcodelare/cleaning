@@ -1141,3 +1141,7 @@ span.price {
 .facilities-date{
     margin-top: 12px;
 }
+
+.p-3{
+    padding: 60px 10px !important;
+}

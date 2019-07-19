@@ -88,13 +88,13 @@
 
             <div class="col-sm-4">
                 <div class="app-promo">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center" style="margin-left: 702px;">
 <!--                    <h6 class="app-promo-content align-self-center">Download the app now </h6>-->
                     <div class="app-icon">
-                        <img src="{{asset('img/app_logos/apple.png')}}" alt="">
+                        <img src="{{asset('public/img/app_logos/apple.png')}}" alt="">
                     </div>
                     <div class="app-icon">
-                        <img src="{{asset('img/app_logos/android.png')}}" alt="">
+                        <img src="{{asset('public/img/app_logos/android.png')}}" alt="">
                     </div>
                 </div>
             </div>
